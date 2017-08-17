@@ -18,4 +18,4 @@
 | :tv: | `:tv:` | demo |
 | :construction_worker: | `:construction_worker:` | internal |
 | :construction: | `:construction:` | work in progress |
-| :pencil: | `:pencil` | readme/docs |
+| :pencil: | `:pencil:` | readme/docs |
