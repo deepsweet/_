@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "description": "My personal ESLint config for Node.js TypeScript project",
   "keywords": "eslint, eslint-config",
-  "homepage": "https://github.com/deepsweet/_/eslint-config-node-ts",
+  "homepage": "https://github.com/deepsweet/_/packages/eslint-config-node-ts",
   "repository": "deepsweet/_",
   "author": "Kir Belevich <kir@belevi.ch> (https://twitter.com/deepsweet)",
   "license": "MIT",
@@ -24,6 +24,9 @@
     "typescript-eslint-parser": "^16.0.0"
   },
   "peerDependencies": {
+    "typescript": "^2.9.1"
+  },
+  "devDependencies": {
     "typescript": "^2.9.1"
   }
 }
