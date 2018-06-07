@@ -18,11 +18,15 @@ module.exports = {
   rules: {
     'no-undef': 'off',
     'no-unused-vars': 'off',
+    'import/no-unresolved': 'off',
     'node/no-unsupported-features': [
       'error',
       {
         ignores: [
-          'modules'
+          'asyncAwait',
+          'modules',
+          'restProperties',
+          'spreadProperties'
         ]
       }
     ],
