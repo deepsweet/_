@@ -1,6 +1,6 @@
 {
   "name": "@deepsweet/eslint-config-node-ts",
-  "version": "0.1.0-1",
+  "version": "0.1.0",
   "description": "My personal ESLint config for Node.js TypeScript project",
   "keywords": "eslint, eslint-config",
   "homepage": "https://github.com/deepsweet/_/eslint-config-node-ts",
