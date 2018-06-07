@@ -1,4 +1,6 @@
 node_modules/
+tmp/
+build/
 .npmrc
-.DS_Store
 *.log
+.DS_Store
