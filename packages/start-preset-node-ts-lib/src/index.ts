@@ -46,7 +46,7 @@ const babelConfig = {
 
 export const build = () =>
   sequence(
-    find('src/*.{ts,js}'),
+    find('src/**/*.{ts,js}'),
     read,
     babel(babelConfig),
     rename((file) => file.replace(/\.ts$/, '.js')),
@@ -55,7 +55,7 @@ export const build = () =>
 
 export const dts = () =>
   sequence(
-    find('src/*.ts'),
+    find('src/**/*.ts'),
     typescriptGenerate('build/')
   )
 
@@ -70,7 +70,7 @@ export const dev = () => watch('src/*.ts')(pack())
 
 export const lint = () =>
   sequence(
-    find('{src,test,tasks}/*.{ts,js}'),
+    find('{src,test,tasks}/**/*.{ts,js}'),
     read,
     eslint(),
     typescriptCheck()
@@ -78,7 +78,7 @@ export const lint = () =>
 
 export const fix = () =>
   sequence(
-    find('{src,test,tasks}/*.{ts,js}'),
+    find('{src,test,tasks}/**/*.{ts,js}'),
     read,
     eslint({ fix: true }),
     overwrite
@@ -88,9 +88,9 @@ export const test = () =>
   sequence(
     find(`coverage/`),
     remove,
-    find('src/*.{ts,js}'),
+    find('src/**/*.{ts,js}'),
     istanbulInstrument({ esModules: true, extensions: ['.ts', '.js'] }),
-    find('test/*.{ts,js}'),
+    find('test/**/*.{ts,js}'),
     tape(tapDiff),
     istanbulReport(['lcovonly', 'html', 'text-summary']),
     istanbulThresholds({
