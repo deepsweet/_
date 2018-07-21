@@ -1,0 +1,17 @@
+{
+  "name": "@deepsweet/browserslist-preset",
+  "version": "0.1.0",
+  "description": "My personal Browserslist preset",
+  "keywords": "browserslist, browsers",
+  "homepage": "https://github.com/deepsweet/_/packages/browserslist-preset",
+  "repository": "deepsweet/_",
+  "author": "Kir Belevich <kir@belevi.ch> (https://twitter.com/deepsweet)",
+  "license": "MIT",
+  "main": "index.js",
+  "files": [
+    "index.js"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}
