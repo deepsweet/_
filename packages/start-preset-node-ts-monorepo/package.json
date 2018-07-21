@@ -1,0 +1,66 @@
+{
+  "name": "@deepsweet/start-preset-node-ts-monorepo",
+  "version": "0.0.1",
+  "description": "My personal Start preset for maintaining Node.js TypeScript monorepo",
+  "keywords": "start, start-preset",
+  "homepage": "https://github.com/deepsweet/_/packages/start-preset-node-ts-monorepo",
+  "repository": "deepsweet/_",
+  "author": "Kir Belevich <kir@belevi.ch> (https://twitter.com/deepsweet)",
+  "license": "MIT",
+  "bin": {
+    "start": "build/cli.js"
+  },
+  "main": "build/index.js",
+  "files": [
+    "build/"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=6"
+  },
+  "dependencies": {
+    "@babel/core": "^7.0.0-0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0-0",
+    "@babel/plugin-transform-runtime": "^7.0.0-0",
+    "@babel/preset-env": "^7.0.0-0",
+    "@babel/preset-typescript": "^7.0.0-0",
+    "@babel/register": "^7.0.0-0",
+    "@start/plugin-assert": "^0.2.0",
+    "@start/plugin-env": "^0.3.0",
+    "@start/plugin-find": "^0.2.0",
+    "@start/plugin-find-git-staged": "^0.2.0",
+    "@start/plugin-lib-babel": "^0.2.0",
+    "@start/plugin-lib-codecov": "^0.2.0",
+    "@start/plugin-lib-eslint": "^0.2.0",
+    "@start/plugin-lib-istanbul": "^0.2.0",
+    "@start/plugin-lib-npm-publish": "^0.2.0",
+    "@start/plugin-lib-npm-version": "^0.2.0",
+    "@start/plugin-lib-tape": "^0.2.0",
+    "@start/plugin-lib-typescript-check": "^0.2.0",
+    "@start/plugin-lib-typescript-generate": "^0.2.0",
+    "@start/plugin-overwrite": "^0.2.0",
+    "@start/plugin-parallel": "^0.2.0",
+    "@start/plugin-read": "^0.2.0",
+    "@start/plugin-remove": "^0.2.0",
+    "@start/plugin-rename": "^0.2.0",
+    "@start/plugin-sequence": "^0.2.0",
+    "@start/plugin-watch": "^0.2.0",
+    "@start/plugin-write": "^0.2.0",
+    "@start/plugin-xargs": "^0.2.0",
+    "@start/reporter-verbose": "^0.1.0",
+    "esm": "^3.0.72",
+    "tap-diff": "^0.1.1"
+  },
+  "peerDependencies": {
+    "typescript": "^2.9.1"
+  },
+  "devDependencies": {
+    "@types/node": "^10.3.4",
+    "typescript": "^2.9.1"
+  },
+  "scripts": {
+    "start": "node ../start-preset-node-ts-lib/src/cli.js"
+  }
+}
