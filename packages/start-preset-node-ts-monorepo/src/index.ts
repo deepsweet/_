@@ -30,7 +30,7 @@ import { babelConfigBuild, babelConfigDts } from './config/babel'
 
 export const build = (packageName: string) =>
   sequence(
-    find(`packages/${packageName}**/*.+(js|ts)`),
+    find(`packages/${packageName}/**/*.+(js|ts)`),
     read,
     babel(babelConfigBuild),
     rename((file) => file.replace(/\.ts$/, '.js')),
@@ -39,7 +39,7 @@ export const build = (packageName: string) =>
 
 export const dts = (packageName: string) =>
   sequence(
-    find(`packages/${packageName}**/*.ts`),
+    find(`packages/${packageName}/**/*.ts`),
     typescriptGenerate(`packages/${packageName}/build/`),
     read,
     babel(babelConfigDts),
@@ -58,7 +58,7 @@ export const pack = (packageName: string) =>
 export const packs = xargs('pack')
 
 export const dev = (packageName: string) =>
-  watch(`packages/${packageName}**/*.ts`)(
+  watch(`packages/${packageName}/**/*.ts`)(
     sequence(
       read,
       babel(babelConfigBuild),
@@ -96,7 +96,7 @@ export const test = () =>
     env({ NODE_ENV: 'test' }),
     find(`coverage/`),
     remove,
-    find('packages/***/*.ts'),
+    find('packages/*/src/**/*.ts'),
     istanbulInstrument({ esModules: true, extensions: ['.ts'] }),
     find('packages/*/test/**/*.ts'),
     tape(tapDiff),
