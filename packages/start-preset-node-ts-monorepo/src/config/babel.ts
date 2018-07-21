@@ -15,11 +15,6 @@ const babelConfigCommon = {
     '@babel/plugin-syntax-dynamic-import',
     ['@babel/plugin-transform-runtime', {
       polyfill: false
-    }],
-    ['module-resolver', {
-      'alias': {
-        '@start/plugin/src/': '@start/plugin'
-      }
     }]
   ]
 }
