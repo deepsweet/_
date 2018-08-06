@@ -1,6 +1,6 @@
 {
   "name": "@deepsweet/start-preset-node-ts-monorepo",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "My personal Start preset for maintaining Node.js TypeScript monorepo",
   "keywords": "start, start-preset",
   "homepage": "https://github.com/deepsweet/_/packages/start-preset-node-ts-monorepo",
