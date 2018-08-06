@@ -18,40 +18,40 @@ $ yarn start
 $ npx start
 ```
 
-### Tasks
+## Tasks
 
-#### build
+### build
 
 Transpile `src/` to `build/` using Babel.
 
-#### dts
+### dts
 
 Generate TypeScript `d.ts` definition files into `build/`.
 
-#### pack
+### pack
 
 `build` + `dts` tasks in parallel.
 
-#### dev
+### dev
 
 Watch `src/` and transpile changed files into `build/`
 
-#### lint
+### lint
 
 Run ESLint.
 
-#### fix
+### fix
 
 Run ESLint with `--fix`.
 
-#### test
+### test
 
 Run tests placed in `test/` with Tape and collect coverage.
 
-#### ci
+### ci
 
 `ci` + `test` + send coverage to [codecov.io](https://codecov.io).
 
-#### publish
+### publish
 
 Publish to NPM using `version` and `otp` args.
