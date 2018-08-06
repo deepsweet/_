@@ -18,8 +18,40 @@ $ yarn start
 $ npx start
 ```
 
-## Projects
+### Tasks
 
-* ✨ [makethen](https://github.com/deepsweet/makethen) – promisify Node.js-style callbacks with native Promise
-* 🕶 [mocku](https://github.com/deepsweet/mocku) – ESM mocking library
-* ➡️ [move-path](https://github.com/deepsweet/move-path) – move path to destination folder
+#### build
+
+Transpile `src/` to `build/` using Babel.
+
+#### dts
+
+Generate TypeScript `d.ts` definition files into `build/`.
+
+#### pack
+
+`build` + `dts` tasks in parallel.
+
+#### dev
+
+Watch `src/` and transpile changed files into `build/`
+
+#### lint
+
+Run ESLint.
+
+#### fix
+
+Run ESLint with `--fix`.
+
+#### test
+
+Run tests placed in `test/` with Tape and collect coverage.
+
+#### ci
+
+`ci` + `test` + send coverage to [codecov.io](https://codecov.io).
+
+#### publish
+
+Publish to NPM using `version` and `otp` args.
