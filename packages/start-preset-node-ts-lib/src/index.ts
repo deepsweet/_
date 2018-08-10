@@ -64,7 +64,15 @@ export const pack = () =>
     parallel(['build', 'dts'])()
   )
 
-export const dev = () => watch('src/*.ts')(pack())
+export const dev = () => watch('src/**/*.ts')(
+  sequence(
+    read,
+    babel(babelConfig),
+    rename((file) => file.replace(/\.ts$/, '.js')),
+    write('build/'),
+    typescriptGenerate('build/')
+  )
+)
 
 export const lint = () =>
   sequence(
