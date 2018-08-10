@@ -11,11 +11,7 @@ import typescriptGenerate from '@start/plugin-lib-typescript-generate'
 import typescriptCheck from '@start/plugin-lib-typescript-check'
 import watch from '@start/plugin-watch'
 import eslint from '@start/plugin-lib-eslint'
-import {
-  istanbulInstrument,
-  istanbulReport,
-  istanbulThresholds
-} from '@start/plugin-lib-istanbul'
+import { istanbulInstrument, istanbulReport } from '@start/plugin-lib-istanbul'
 import tape from '@start/plugin-lib-tape'
 import tapDiff from 'tap-diff'
 import codecov from '@start/plugin-lib-codecov'
@@ -98,13 +94,7 @@ export const test = () =>
     istanbulInstrument({ esModules: true, extensions: ['.ts', '.js'] }),
     find('test/**/*.{ts,js}'),
     tape(tapDiff),
-    istanbulReport(['lcovonly', 'html', 'text-summary']),
-    istanbulThresholds({
-      branches: 100,
-      functions: 100,
-      lines: 100,
-      statements: 100
-    })
+    istanbulReport(['lcovonly', 'html', 'text-summary'])
   )
 
 export const ci = () =>
