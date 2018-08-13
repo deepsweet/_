@@ -17,6 +17,7 @@ import tapDiff from 'tap-diff'
 import codecov from '@start/plugin-lib-codecov'
 import npmVersion from '@start/plugin-lib-npm-version'
 import npmPublish from '@start/plugin-lib-npm-publish'
+import copyEsmLoader from '@start/plugin-lib-esm-loader'
 
 const babelConfig = {
   babelrc: false,
@@ -44,7 +45,8 @@ export const build = () =>
     read,
     babel(babelConfig),
     rename((file) => file.replace(/\.ts$/, '.js')),
-    write('build/')
+    write('build/'),
+    copyEsmLoader('build/')
   )
 
 export const dts = () =>
