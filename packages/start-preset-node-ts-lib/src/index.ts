@@ -45,8 +45,7 @@ export const build = () =>
     read,
     babel(babelConfig),
     rename((file) => file.replace(/\.ts$/, '.js')),
-    write('build/'),
-    copyEsmLoader('build/')
+    write('build/')
   )
 
 export const dts = () =>
@@ -59,7 +58,8 @@ export const pack = () =>
   sequence(
     find('build/'),
     remove,
-    parallel(['build', 'dts'])()
+    parallel(['build', 'dts'])(),
+    copyEsmLoader('build/')
   )
 
 export const dev = () => watch('src/**/*.ts')(
