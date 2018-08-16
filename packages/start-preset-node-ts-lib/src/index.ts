@@ -51,7 +51,7 @@ export const build = () =>
 
 export const dts = () =>
   sequence(
-    find('src/**/*.ts'),
+    find('src/index.ts'),
     typescriptGenerate('build/')
   )
 
