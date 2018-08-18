@@ -19,14 +19,13 @@ module.exports = {
     'no-undef': 'off',
     'no-unused-vars': 'off',
     'import/no-unresolved': 'off',
-    'node/no-unsupported-features': [
+    'node/no-unsupported-features/es-syntax': [
       'error',
       {
         ignores: [
-          'asyncAwait',
+          'asyncFunctions',
           'modules',
-          'restProperties',
-          'spreadProperties'
+          'restSpreadProperties'
         ]
       }
     ],
