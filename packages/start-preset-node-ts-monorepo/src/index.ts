@@ -38,6 +38,7 @@ export const dts = (packageName: string) =>
   sequence(
     find(`packages/${packageName}/src/index.ts`),
     typescriptGenerate(`packages/${packageName}/build/`),
+    find(`packages/${packageName}/build/**/*.d.ts`),
     read,
     babel(babelConfigDts),
     write(`packages/${packageName}/build/`)
