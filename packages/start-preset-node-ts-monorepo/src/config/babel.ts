@@ -23,6 +23,7 @@ const babelConfigCommon = {
 
 export const babelConfigBuild = {
   ...babelConfigCommon,
+  comments: false,
   presets: [
     ...babelConfigCommon.presets,
     '@babel/preset-typescript'
