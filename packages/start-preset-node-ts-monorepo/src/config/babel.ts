@@ -5,7 +5,7 @@ const babelConfigCommon = {
       '@babel/preset-env',
       {
         targets: {
-          node: 8
+          node: '8.6.0'
         },
         modules: false
       }
