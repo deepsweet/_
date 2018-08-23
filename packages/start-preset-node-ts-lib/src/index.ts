@@ -21,6 +21,7 @@ import copyEsmLoader from '@start/plugin-lib-esm-loader'
 
 const babelConfig = {
   babelrc: false,
+  comments: false,
   presets: [
     [
       '@babel/preset-env',
