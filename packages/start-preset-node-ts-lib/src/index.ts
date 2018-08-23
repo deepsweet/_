@@ -27,7 +27,7 @@ const babelConfig = {
       '@babel/preset-env',
       {
         targets: {
-          node: 6
+          node: '8.6.0'
         },
         modules: false
       }
@@ -35,8 +35,7 @@ const babelConfig = {
     '@babel/preset-typescript'
   ],
   plugins: [
-    '@babel/plugin-syntax-dynamic-import',
-    '@babel/plugin-transform-runtime'
+    '@babel/plugin-syntax-dynamic-import'
   ]
 }
 
