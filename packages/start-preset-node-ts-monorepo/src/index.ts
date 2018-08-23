@@ -13,11 +13,7 @@ import write from '@start/plugin-write'
 import overwrite from '@start/plugin-overwrite'
 import watch from '@start/plugin-watch'
 import eslint from '@start/plugin-lib-eslint'
-import {
-  istanbulInstrument,
-  istanbulReport,
-  istanbulThresholds
-} from '@start/plugin-lib-istanbul'
+import { istanbulInstrument, istanbulReport } from '@start/plugin-lib-istanbul'
 import tape from '@start/plugin-lib-tape'
 import typescriptGenerate from '@start/plugin-lib-typescript-generate'
 import typescriptCheck from '@start/plugin-lib-typescript-check'
