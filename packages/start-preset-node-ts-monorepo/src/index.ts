@@ -105,12 +105,7 @@ export const test = () =>
 export const ci = () =>
   sequence(
     lintAll(),
-    test()
-  )
-
-export const ciCoverage = () =>
-  sequence(
-    ci(),
+    test(),
     find('coverage/lcov.info'),
     read,
     codecov
