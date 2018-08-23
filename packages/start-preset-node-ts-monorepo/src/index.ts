@@ -20,6 +20,7 @@ import typescriptCheck from '@start/plugin-lib-typescript-check'
 import npmVersion from '@start/plugin-lib-npm-version'
 import npmPublish from '@start/plugin-lib-npm-publish'
 import codecov from '@start/plugin-lib-codecov'
+import copyEsmLoader from '@start/plugin-lib-esm-loader'
 import tapDiff from 'tap-diff'
 
 import { babelConfigBuild, babelConfigDts } from './config/babel'
@@ -48,7 +49,8 @@ export const pack = (packageName: string) =>
     env({ NODE_ENV: 'production' }),
     find(`packages/${packageName}/build/`),
     remove,
-    parallel(['build', 'dts'])(packageName)
+    parallel(['build', 'dts'])(packageName),
+    copyEsmLoader(`packages/${packageName}/build/`)
   )
 
 export const packs = xargs('pack')
