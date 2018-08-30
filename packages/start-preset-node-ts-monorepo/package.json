@@ -51,7 +51,7 @@
     "@start/plugin-xargs": "^0.2.0",
     "@start/reporter-verbose": "^0.1.0",
     "babel-plugin-module-resolver": "^3.1.1",
-    "esm": "^3.0.72",
+    "esm": "^3.0.81",
     "tap-diff": "^0.1.1"
   },
   "peerDependencies": {
