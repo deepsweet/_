@@ -5,7 +5,10 @@
 /* eslint-disable no-throw-literal */
 /* eslint-disable node/shebang */
 /* eslint-disable node/no-missing-require */
-require = require('esm')(module)
+require = require('esm')(module, {
+  mainFields: ['module', 'main'],
+  cache: false
+})
 
 require('@babel/register')({
   presets: [
