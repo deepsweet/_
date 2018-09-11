@@ -15,7 +15,7 @@ const babelConfigCommon = {
     '@babel/plugin-syntax-dynamic-import',
     ['babel-plugin-module-resolver', {
       alias: {
-        '^(@.+)/src/': '\\1'
+        '^(@.+)/src/?': '\\1'
       }
     }]
   ]
@@ -30,10 +30,10 @@ export const babelConfigBuild = {
   ]
 }
 
-export const babelConfigDts = {
-  ...babelConfigCommon,
-  plugins: [
-    ...babelConfigCommon.plugins,
-    '@babel/plugin-syntax-typescript'
-  ]
-}
+// export const babelConfigDts = {
+//   ...babelConfigCommon,
+//   plugins: [
+//     ...babelConfigCommon.plugins,
+//     '@babel/plugin-syntax-typescript'
+//   ]
+// }

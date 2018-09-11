@@ -26,6 +26,7 @@
     "@babel/preset-env": "^7.0.0",
     "@babel/preset-typescript": "^7.0.0",
     "@babel/register": "^7.0.0",
+    "@start/plugin": "^0.2.0",
     "@start/plugin-assert": "^0.2.0",
     "@start/plugin-env": "^0.3.0",
     "@start/plugin-find": "^0.2.0",

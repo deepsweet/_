@@ -1,3 +1,4 @@
+import plugin from '@start/plugin'
 import sequence from '@start/plugin-sequence'
 import parallel from '@start/plugin-parallel'
 import xargs from '@start/plugin-xargs'
@@ -23,7 +24,7 @@ import codecov from '@start/plugin-lib-codecov'
 import copyEsmLoader from '@start/plugin-lib-esm-loader'
 import tapDiff from 'tap-diff'
 
-import { babelConfigBuild, babelConfigDts } from './config/babel'
+import { babelConfigBuild } from './config/babel'
 
 export const build = (packageName: string) =>
   sequence(
@@ -40,7 +41,14 @@ export const dts = (packageName: string) =>
     typescriptGenerate(`packages/${packageName}/build/`),
     find(`packages/${packageName}/build/**/*.d.ts`),
     read,
-    babel(babelConfigDts),
+    // https://github.com/babel/babel/issues/7749
+    // babel(babelConfigDts)
+    plugin('modifyImports', ({ files }) => ({
+      files: files.map((file) => ({
+        ...file,
+        data: file.data.replace(/"@(.+?)\/src"/, '$1')
+      }))
+    })),
     write(`packages/${packageName}/build/`)
   )
 
