@@ -50,7 +50,7 @@
     "@start/plugin-read": "^0.2.1",
     "@start/plugin-remove": "^0.2.2",
     "@start/plugin-rename": "^0.2.1",
-    "@start/plugin-sequence": "^0.2.1",
+    "@start/plugin-sequence": "^0.2.2",
     "@start/plugin-write": "^0.2.1",
     "@start/reporter-verbose": "^0.1.0",
     "@types/node": "^10.9.4",
