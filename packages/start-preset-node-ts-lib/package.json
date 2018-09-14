@@ -48,15 +48,5 @@
     "@start/reporter-verbose": "^0.1.0",
     "esm": "^3.0.82",
     "tap-diff": "^0.1.1"
-  },
-  "peerDependencies": {
-    "typescript": "*"
-  },
-  "devDependencies": {
-    "@types/node": "^10.9.4",
-    "typescript": "^3.0.3"
-  },
-  "scripts": {
-    "start": "node src/cli.js"
   }
 }
