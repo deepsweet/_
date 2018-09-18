@@ -6,8 +6,7 @@
 /* eslint-disable node/shebang */
 /* eslint-disable node/no-missing-require */
 require = require('esm')(module, {
-  mainFields: ['module', 'main'],
-  cache: false
+  mainFields: ['module', 'main']
 })
 
 require('@babel/register')({
