@@ -598,12 +598,12 @@
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.1.tgz#53f349bb986ab273d601175aa1b25a655ab90ee3"
 
-"@start/cli@^0.3.1":
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/@start/cli/-/cli-0.3.1.tgz#aad3ba0e6e021b71d0b9adfe0bc24bb8fc5a676f"
+"@start/cli@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@start/cli/-/cli-0.3.2.tgz#e37dc0b2ec8d2b37aab362c1d83d2b121b967009"
   dependencies:
     "@babel/runtime" "^7.0.0"
-    esm "^3.0.81"
+    esm "^3.0.84"
 
 "@start/plugin-assert@^0.2.1":
   version "0.2.1"
@@ -667,9 +667,9 @@
     "@start/plugin" "^0.2.1"
     copie "^0.1.0"
 
-"@start/plugin-lib-istanbul@^0.4.1":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@start/plugin-lib-istanbul/-/plugin-lib-istanbul-0.4.1.tgz#95a2ceac71c028d19e708147ffa3e2be9cf40c43"
+"@start/plugin-lib-istanbul@^0.4.2":
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/@start/plugin-lib-istanbul/-/plugin-lib-istanbul-0.4.2.tgz#95bd3d730604fc1d7ea0b7886104b35400c07b05"
   dependencies:
     "@babel/runtime" "^7.0.0"
     "@start/plugin" "^0.2.1"
@@ -1606,9 +1606,9 @@ eslint@^5.0.0, eslint@^5.4.0:
     table "^4.0.3"
     text-table "^0.2.0"
 
-esm@^3.0.81, esm@^3.0.82:
-  version "3.0.82"
-  resolved "https://registry.yarnpkg.com/esm/-/esm-3.0.82.tgz#e8c4363a14e30936bedf49a44bf962e2c91866ff"
+esm@^3.0.84:
+  version "3.0.84"
+  resolved "https://registry.yarnpkg.com/esm/-/esm-3.0.84.tgz#bb108989f4673b32d4f62406869c28eed3815a63"
 
 espree@^4.0.0:
   version "4.0.0"
@@ -3623,10 +3623,6 @@ typescript-eslint-parser@^18.0.0:
   dependencies:
     lodash.unescape "4.0.1"
     semver "5.5.0"
-
-typescript@^3.0.0:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.0.1.tgz#43738f29585d3a87575520a4b93ab6026ef11fdb"
 
 typescript@^3.0.3:
   version "3.0.3"

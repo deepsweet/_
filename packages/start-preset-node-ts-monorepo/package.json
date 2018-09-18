@@ -35,7 +35,7 @@
     "@start/plugin-lib-codecov": "^0.2.1",
     "@start/plugin-lib-eslint": "^0.3.1",
     "@start/plugin-lib-esm-loader": "^0.1.4",
-    "@start/plugin-lib-istanbul": "^0.4.1",
+    "@start/plugin-lib-istanbul": "^0.4.2",
     "@start/plugin-lib-npm-publish": "^0.2.1",
     "@start/plugin-lib-npm-version": "^0.2.1",
     "@start/plugin-lib-tape": "^0.2.1",
@@ -52,7 +52,7 @@
     "@start/plugin-xargs": "^0.2.1",
     "@start/reporter-verbose": "^0.1.0",
     "babel-plugin-module-resolver": "^3.1.1",
-    "esm": "^3.0.82",
+    "esm": "^3.0.84",
     "tap-diff": "^0.1.1"
   }
 }
