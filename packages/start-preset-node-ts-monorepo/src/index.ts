@@ -88,7 +88,9 @@ export const lint = () =>
     findGitStaged(['packages/*/+(src|test)/**/*.ts', 'tasks/**/*.ts']),
     read,
     eslint(),
-    typescriptCheck()
+    typescriptCheck({
+      lib: ['esnext', 'dom']
+    })
   )
 
 export const lintAll = () =>
@@ -96,7 +98,9 @@ export const lintAll = () =>
     find(['packages/*/+(src|test)/**/*.+(ts|js)', 'tasks/**/*.ts']),
     read,
     eslint(),
-    typescriptCheck()
+    typescriptCheck({
+      lib: ['esnext', 'dom']
+    })
   )
 
 export const fix = () =>
