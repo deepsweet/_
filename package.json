@@ -33,10 +33,10 @@
     "reporter": "@start/reporter-verbose"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
+    "@babel/core": "^7.1.0",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/preset-typescript": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-typescript": "^7.1.0",
     "@babel/register": "^7.0.0",
     "@start/cli": "^0.3.2",
     "@start/plugin-env": "^0.3.1",
@@ -54,7 +54,7 @@
     "@start/plugin-sequence": "^0.2.2",
     "@start/plugin-write": "^0.2.1",
     "@start/reporter-verbose": "^0.1.0",
-    "@types/node": "^10.9.4",
+    "@types/node": "^10.10.1",
     "eslint": "^5.0.0",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.11.0",
