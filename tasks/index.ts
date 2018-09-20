@@ -11,6 +11,16 @@ import overwrite from '@start/plugin-overwrite'
 import eslint from '@start/plugin-lib-eslint'
 import typescriptGenerate from '@start/plugin-lib-typescript-generate'
 import typescriptCheck from '@start/plugin-lib-typescript-check'
+import {
+  makeWorkspacesCommit,
+  buildBumpedPackages,
+  getWorkspacesPackagesBumps,
+  publishWorkspacesPackagesBumps,
+  publishWorkspacesPrompt,
+  writeWorkspacesPackagesBumps,
+  makeWorkspacesGithubReleases,
+  pushCommitsAndTags
+} from '@start/plugin-lib-auto'
 
 export const build = async (packageName: string) => {
   const { default: babelConfig } = await import('./config/babel')
@@ -53,3 +63,23 @@ export const fix = () =>
     eslint({ fix: true }),
     overwrite
   )
+
+export const commit = async () => {
+  const { default: autoOptions } = await import('./config/auto')
+
+  return makeWorkspacesCommit(autoOptions)
+}
+
+export const publish = async () => {
+  const { default: autoOptions } = await import('./config/auto')
+
+  return sequence(
+    getWorkspacesPackagesBumps(autoOptions),
+    publishWorkspacesPrompt(autoOptions),
+    buildBumpedPackages(pack),
+    writeWorkspacesPackagesBumps(autoOptions),
+    publishWorkspacesPackagesBumps(autoOptions),
+    pushCommitsAndTags,
+    makeWorkspacesGithubReleases(process.env.GITHUB_RELEASE_TOKEN, autoOptions)
+  )
+}

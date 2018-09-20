@@ -41,6 +41,7 @@
     "@start/cli": "^0.3.2",
     "@start/plugin-env": "^0.3.1",
     "@start/plugin-find": "^0.2.1",
+    "@start/plugin-lib-auto": "^0.3.2",
     "@start/plugin-lib-babel": "^0.2.2",
     "@start/plugin-lib-eslint": "^0.3.1",
     "@start/plugin-lib-typescript-check": "^0.2.2",
@@ -60,7 +61,7 @@
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-promise": "^4.0.0",
     "eslint-plugin-standard": "^3.1.0",
-    "typescript": "^3.0.3",
+    "typescript": "^3.1.0-0",
     "typescript-eslint-parser": "^18.0.0"
   }
 }
