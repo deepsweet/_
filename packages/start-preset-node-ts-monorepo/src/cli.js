@@ -34,18 +34,24 @@ require('@babel/register')({
 const { default: reporter } = require('@start/reporter-verbose')
 const tasks = require('./')
 
-const taskName = process.argv[2]
-const taskArgs = process.argv.slice(3)
-const task = tasks[taskName]
+;(async () => {
+  const taskName = process.argv[2]
+  const taskArgs = process.argv.slice(3)
+  const task = tasks[taskName]
 
-if (typeof taskName === 'undefined' || typeof task === 'undefined') {
-  throw `One of the following task names is required:\n* ${Object.keys(tasks).join('\n* ')}`
-}
-
-task(...taskArgs)({ reporter: reporter(taskName) }).catch((error) => {
-  if (error !== null) {
-    console.log(error)
+  if (typeof taskName === 'undefined' || typeof task === 'undefined') {
+    throw `One of the following task names is required:\n* ${Object.keys(tasks).join('\n* ')}`
   }
 
-  process.exit(1)
-})
+  const taskRunner = await task(...taskArgs)
+
+  try {
+    await taskRunner({ reporter: reporter(taskName) })
+  } catch (error) {
+    if (error !== null) {
+      console.log(error)
+    }
+
+    process.exit(1)
+  }
+})()
