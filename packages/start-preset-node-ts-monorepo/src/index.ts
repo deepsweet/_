@@ -18,13 +18,22 @@ import { istanbulInstrument, istanbulReport } from '@start/plugin-lib-istanbul'
 import tape from '@start/plugin-lib-tape'
 import typescriptGenerate from '@start/plugin-lib-typescript-generate'
 import typescriptCheck from '@start/plugin-lib-typescript-check'
-import npmVersion from '@start/plugin-lib-npm-version'
-import npmPublish from '@start/plugin-lib-npm-publish'
 import codecov from '@start/plugin-lib-codecov'
 import copyEsmLoader from '@start/plugin-lib-esm-loader'
+import {
+  makeWorkspacesCommit,
+  buildBumpedPackages,
+  getWorkspacesPackagesBumps,
+  publishWorkspacesPackagesBumps,
+  publishWorkspacesPrompt,
+  writeWorkspacesPackagesBumps,
+  makeWorkspacesGithubReleases,
+  pushCommitsAndTags
+} from '@start/plugin-lib-auto'
 import tapDiff from 'tap-diff'
 
 import { babelConfigBuild } from './config/babel'
+import { TOptions } from '@auto/utils'
 
 export const build = (packageName: string) =>
   sequence(
@@ -46,7 +55,7 @@ export const dts = (packageName: string) =>
     plugin('modifyImports', ({ files }) => ({
       files: files.map((file) => ({
         ...file,
-        data: file.data.replace(/(@.+?)\/src\/?/, '$1')
+        data: file.data.replace(/(@.+?)\/src\/?/g, '$1')
       }))
     })),
     write(`packages/${packageName}/build/`)
@@ -119,14 +128,28 @@ export const ci = () =>
     codecov
   )
 
-export const publish = (packageName: string, version: string) =>
-  sequence(
-    assert(packageName, 'package name is required'),
-    assert(version, 'package version is required'),
-    pack(packageName),
-    npmVersion(version, {
-      packagePath: `packages/${packageName}`,
-      message: `📦 ${packageName}: v%s`
-    }),
-    npmPublish(`packages/${packageName}`)
+export const commit = async () => {
+  const { default: cosmiconfig } = await import('cosmiconfig')
+  const explorer = cosmiconfig('auto')
+  const { config } = await explorer.search()
+  const autoOptions = config as TOptions
+
+  return makeWorkspacesCommit(autoOptions)
+}
+
+export const publish = async () => {
+  const { default: cosmiconfig } = await import('cosmiconfig')
+  const explorer = cosmiconfig('auto')
+  const { config } = await explorer.search()
+  const autoOptions = config as TOptions
+
+  return sequence(
+    getWorkspacesPackagesBumps(autoOptions),
+    publishWorkspacesPrompt(autoOptions),
+    buildBumpedPackages(pack),
+    writeWorkspacesPackagesBumps(autoOptions),
+    publishWorkspacesPackagesBumps(autoOptions),
+    pushCommitsAndTags,
+    makeWorkspacesGithubReleases(process.env.GITHUB_RELEASE_TOKEN, autoOptions)
   )
+}

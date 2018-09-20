@@ -969,9 +969,9 @@
     "@start/plugin" "^0.2.1"
     globby "^8.0.1"
 
-"@start/plugin-lib-auto@^0.3.2":
-  version "0.3.2"
-  resolved "https://registry.yarnpkg.com/@start/plugin-lib-auto/-/plugin-lib-auto-0.3.2.tgz#19b6780b4c407f9ec5e57663a289a5983ca110a3"
+"@start/plugin-lib-auto@^0.3.4":
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/@start/plugin-lib-auto/-/plugin-lib-auto-0.3.4.tgz#043b960d809104507a83329e2b66e9149b22565b"
   dependencies:
     "@auto/bump" "^0.0.19"
     "@auto/fs" "^0.0.12"
@@ -980,7 +980,7 @@
     "@auto/npm" "^0.0.21"
     "@babel/runtime" "^7.0.0"
     "@start/plugin" "^0.2.1"
-    prompts "^1.1.0"
+    prompts "^1.1.1"
 
 "@start/plugin-lib-babel@^0.2.2":
   version "0.2.2"
@@ -3357,6 +3357,13 @@ prompts@^1.1.0:
     kleur "^2.0.1"
     sisteransi "^1.0.0"
 
+prompts@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/prompts/-/prompts-1.1.1.tgz#c687590e472c08cd84cfa4b8694b1cab5de45144"
+  dependencies:
+    kleur "^2.0.1"
+    sisteransi "^1.0.0"
+
 psl@^1.1.24:
   version "1.1.29"
   resolved "https://registry.yarnpkg.com/psl/-/psl-1.1.29.tgz#60f580d360170bb722a797cc704411e6da850c67"
@@ -4007,6 +4014,10 @@ type-check@~0.3.2:
   resolved "https://registry.yarnpkg.com/type-check/-/type-check-0.3.2.tgz#5884cab512cf1d355e3fb784f30804b2b520db72"
   dependencies:
     prelude-ls "~1.1.2"
+
+typeon@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/typeon/-/typeon-0.1.1.tgz#6fb1c1bbeba85fa5237a1a736b902489eda1b3c4"
 
 typescript-eslint-parser@^18.0.0:
   version "18.0.0"
