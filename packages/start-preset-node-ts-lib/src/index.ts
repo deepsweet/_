@@ -18,7 +18,7 @@ import codecov from '@start/plugin-lib-codecov'
 
 const babelConfig = {
   babelrc: false,
-  comments: false,
+  shouldPrintComment: (val: string) => val.startsWith('#'),
   presets: [
     [
       require.resolve('@babel/preset-env'),
