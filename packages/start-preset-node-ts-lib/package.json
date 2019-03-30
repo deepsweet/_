@@ -46,6 +46,7 @@
     "@start/plugin-write": "^0.3.0",
     "@start/reporter-verbose": "^0.2.0",
     "babel-plugin-dynamic-import-node": "^2.2.0",
+    "esm": "^3.2.22",
     "tap-diff": "^0.1.1"
   },
   "devDependencies": {

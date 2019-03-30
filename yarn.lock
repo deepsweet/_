@@ -846,14 +846,6 @@
     "@start/plugin" "^0.2.1"
     copie "^0.1.0"
 
-"@start/plugin-lib-esm-loader@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@start/plugin-lib-esm-loader/-/plugin-lib-esm-loader-0.2.0.tgz#d218953a911a53cf09ab51bd11a753174ff2a5b6"
-  integrity sha512-qw20qoV+6opZfi9AUgKDSyq8QAjACr2fmVPnIylF/cFb4r3e/y/N6eF0TzwE5qdPFbXtJ+actjEk2/PsXKhtqA==
-  dependencies:
-    "@start/plugin" "^0.3.0"
-    copie "^0.1.0"
-
 "@start/plugin-lib-istanbul@^0.4.2":
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/@start/plugin-lib-istanbul/-/plugin-lib-istanbul-0.4.2.tgz#95bd3d730604fc1d7ea0b7886104b35400c07b05"
@@ -882,22 +874,6 @@
     istanbul-lib-instrument "^3.1.0"
     istanbul-lib-report "^2.0.4"
     istanbul-lib-source-maps "^3.0.2"
-
-"@start/plugin-lib-npm-publish@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@start/plugin-lib-npm-publish/-/plugin-lib-npm-publish-0.3.0.tgz#274e449b33262ca8ca9843a8a1065ec1ea73b93a"
-  integrity sha512-KY0jFgSy83lVNdPC+FvyhVoG/e44wQvnT39xjvqKT03tUN39lNK9GkWSaOfrj/kr87g13te7aBEglAqeBY0ZtQ==
-  dependencies:
-    "@start/plugin" "^0.3.0"
-    execa "^1.0.0"
-
-"@start/plugin-lib-npm-version@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@start/plugin-lib-npm-version/-/plugin-lib-npm-version-0.3.0.tgz#0c1e103b3bf1f525125eeec1c1c5c9e5de04b8c7"
-  integrity sha512-rpjKvjttZp9LgGubcCBQqhWPH7pOOw5o/1CYtV2yKJ1lmTXEO5owtBD2oEovRy4u7amRKljuA13t0ZoKQNvh8Q==
-  dependencies:
-    "@start/plugin" "^0.3.0"
-    execa "^1.0.0"
 
 "@start/plugin-lib-tape@^0.2.1":
   version "0.2.1"
@@ -2029,7 +2005,7 @@ eslint@^5.0.0, eslint@^5.13.0, eslint@^5.4.0:
     table "^5.2.3"
     text-table "^0.2.0"
 
-esm@^3.0.82, esm@^3.0.84:
+esm@^3.0.82, esm@^3.0.84, esm@^3.2.22:
   version "3.2.22"
   resolved "https://registry.yarnpkg.com/esm/-/esm-3.2.22.tgz#5062c2e22fee3ccfee4e8f20da768330da90d6e3"
   integrity sha512-z8YG7U44L82j1XrdEJcqZOLUnjxco8pO453gKOlaMD1/md1n/5QrscAmYG+oKUspsmDLuBFZrpbxI6aQ67yRxA==
