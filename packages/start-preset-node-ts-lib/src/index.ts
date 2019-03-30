@@ -15,27 +15,30 @@ import { istanbulInstrument, istanbulReport } from '@start/plugin-lib-istanbul'
 import tape from '@start/plugin-lib-tape'
 import tapDiff from 'tap-diff'
 import codecov from '@start/plugin-lib-codecov'
-import npmVersion from '@start/plugin-lib-npm-version'
-import npmPublish from '@start/plugin-lib-npm-publish'
-import copyEsmLoader from '@start/plugin-lib-esm-loader'
 
 const babelConfig = {
   babelrc: false,
   comments: false,
   presets: [
     [
-      '@babel/preset-env',
+      require.resolve('@babel/preset-env'),
       {
         targets: {
-          node: '8.6.0'
-        },
-        modules: false
+          node: '8.6.0',
+        }
       }
     ],
-    '@babel/preset-typescript'
+    require.resolve('@babel/preset-typescript')
   ],
   plugins: [
-    '@babel/plugin-syntax-dynamic-import'
+    [
+      require.resolve('@babel/plugin-transform-runtime'),
+      {
+        regenerator: false
+      }
+    ],
+    require.resolve('@babel/plugin-syntax-dynamic-import'),
+    require.resolve('babel-plugin-dynamic-import-node')
   ]
 }
 
@@ -51,9 +54,7 @@ export const build = () =>
 export const dts = () =>
   sequence(
     find('src/index.ts'),
-    typescriptGenerate('build/', {
-      lib: ['esnext', 'dom']
-    })
+    typescriptGenerate('build/')
   )
 
 export const pack = () =>
@@ -61,7 +62,6 @@ export const pack = () =>
     find('build/'),
     remove,
     parallel(['build', 'dts'])(),
-    copyEsmLoader('build/')
   )
 
 export const dev = () => watch('src/**/*.ts')(
@@ -79,9 +79,7 @@ export const lint = () =>
     find('{src,test,tasks}/**/*.{ts,js}'),
     read,
     eslint(),
-    typescriptCheck({
-      lib: ['esnext', 'dom']
-    })
+    typescriptCheck()
   )
 
 export const fix = () =>
@@ -110,11 +108,4 @@ export const ci = () =>
     find('coverage/lcov.info'),
     read,
     codecov
-  )
-
-export const publish = (version, otp) =>
-  sequence(
-    pack(),
-    npmVersion(version),
-    npmPublish('./', { otp })
   )
