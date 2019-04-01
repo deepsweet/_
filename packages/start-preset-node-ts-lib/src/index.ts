@@ -79,7 +79,9 @@ export const lint = () =>
     find('{src,test,tasks}/**/*.{ts,js}'),
     read,
     eslint(),
-    typescriptCheck()
+    typescriptCheck({
+      lib: ['esnext', 'dom']
+    })
   )
 
 export const fix = () =>
