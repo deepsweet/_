@@ -1,18 +1,15 @@
-import plugin from '@start/plugin'
 import sequence from '@start/plugin-sequence'
 import parallel from '@start/plugin-parallel'
 import xargs from '@start/plugin-xargs'
 import assert from '@start/plugin-assert'
 import env from '@start/plugin-env'
 import find from '@start/plugin-find'
-import findGitStaged from '@start/plugin-find-git-staged'
 import remove from '@start/plugin-remove'
 import read from '@start/plugin-read'
 import babel from '@start/plugin-lib-babel'
 import rename from '@start/plugin-rename'
 import write from '@start/plugin-write'
 import overwrite from '@start/plugin-overwrite'
-import watch from '@start/plugin-watch'
 import eslint from '@start/plugin-lib-eslint'
 import { istanbulInstrument, istanbulReport } from '@start/plugin-lib-istanbul'
 import tape from '@start/plugin-lib-tape'
@@ -32,14 +29,45 @@ import {
 } from '@start/plugin-lib-auto'
 import tapDiff from 'tap-diff'
 
-import { babelConfigBuild } from './config/babel'
-import { TOptions } from '@auto/utils'
+const babelConfig = {
+  babelrc: false,
+  shouldPrintComment: (val: string) => val.startsWith('#'),
+  presets: [
+    [
+      require.resolve('@babel/preset-env'),
+      {
+        targets: {
+          node: '8.6.0',
+        }
+      }
+    ],
+    require.resolve('@babel/preset-typescript')
+  ],
+  plugins: [
+    [
+      require.resolve('@babel/plugin-transform-runtime'),
+      {
+        regenerator: false
+      }
+    ],
+    require.resolve('@babel/plugin-syntax-dynamic-import'),
+    require.resolve('babel-plugin-dynamic-import-node'),
+    [
+      require.resolve('babel-plugin-module-resolver'),
+      {
+        alias: {
+          '^(@.+)/src/?': '\\1'
+        }
+      }
+    ]
+  ]
+}
 
 export const build = (packageName: string) =>
   sequence(
     find(`packages/${packageName}/src/**/*.+(js|ts)`),
     read,
-    babel(babelConfigBuild),
+    babel(babelConfig),
     rename((file) => file.replace(/\.ts$/, '.js')),
     write(`packages/${packageName}/build/`)
   )
@@ -47,18 +75,7 @@ export const build = (packageName: string) =>
 export const dts = (packageName: string) =>
   sequence(
     find(`packages/${packageName}/src/index.ts`),
-    typescriptGenerate(`packages/${packageName}/build/`),
-    find(`packages/${packageName}/build/**/*.d.ts`),
-    read,
-    // https://github.com/babel/babel/issues/7749
-    // babel(babelConfigDts)
-    plugin('modifyImports', ({ files }) => ({
-      files: files.map((file) => ({
-        ...file,
-        data: file.data.replace(/(@.+?)\/src\/?/g, '$1')
-      }))
-    })),
-    write(`packages/${packageName}/build/`)
+    typescriptGenerate(`packages/${packageName}/build/`)
   )
 
 export const pack = (packageName: string) =>
@@ -73,29 +90,9 @@ export const pack = (packageName: string) =>
 
 export const packs = xargs('pack')
 
-export const dev = (packageName: string) =>
-  watch(`packages/${packageName}/**/*.ts`)(
-    sequence(
-      read,
-      babel(babelConfigBuild),
-      rename((file) => file.replace(/\.ts$/, '.js')),
-      write(`packages/${packageName}/build/`)
-    )
-  )
-
 export const lint = () =>
   sequence(
-    findGitStaged(['packages/*/+(src|test)/**/*.ts', 'tasks/**/*.ts']),
-    read,
-    eslint(),
-    typescriptCheck({
-      lib: ['esnext', 'dom']
-    })
-  )
-
-export const lintAll = () =>
-  sequence(
-    find(['packages/*/+(src|test)/**/*.+(ts|js)', 'tasks/**/*.ts']),
+    find(['packages/*/+(src|test)/**/*.ts', 'tasks/**/*.ts']),
     read,
     eslint(),
     typescriptCheck({
@@ -125,35 +122,22 @@ export const test = () =>
 
 export const ci = () =>
   sequence(
-    lintAll(),
+    lint(),
     test(),
     find('coverage/lcov.info'),
     read,
     codecov
   )
 
-export const commit = async () => {
-  const { default: cosmiconfig } = await import('cosmiconfig')
-  const explorer = cosmiconfig('auto')
-  const { config } = await explorer.search()
-  const autoOptions = config as TOptions
+export const commit = () => makeWorkspacesCommit(prefixes, workspacesOptions)
 
-  return makeWorkspacesCommit(autoOptions)
-}
-
-export const publish = async () => {
-  const { default: cosmiconfig } = await import('cosmiconfig')
-  const explorer = cosmiconfig('auto')
-  const { config } = await explorer.search()
-  const autoOptions = config as TOptions
-
-  return sequence(
-    getWorkspacesPackagesBumps(autoOptions),
-    publishWorkspacesPrompt(autoOptions),
+export const publish = () =>
+  sequence(
+    getWorkspacesPackagesBumps(prefixes, gitOptions, bumpOptions, workspacesOptions),
+    publishWorkspacesPrompt(prefixes),
     buildBumpedPackages(pack),
-    writeWorkspacesPackagesBumps(autoOptions),
-    publishWorkspacesPackagesBumps(autoOptions),
+    writeWorkspacesPackagesBumps(prefixes, workspacesOptions),
+    publishWorkspacesPackagesBumps(),
     pushCommitsAndTags,
-    makeWorkspacesGithubReleases(process.env.GITHUB_RELEASE_TOKEN, autoOptions)
-  )
-}
+    makeWorkspacesGithubReleases(prefixes, githubOptions)
+)

@@ -9,7 +9,6 @@ import overwrite from '@start/plugin-overwrite'
 import babel from '@start/plugin-lib-babel'
 import typescriptGenerate from '@start/plugin-lib-typescript-generate'
 import typescriptCheck from '@start/plugin-lib-typescript-check'
-import watch from '@start/plugin-watch'
 import eslint from '@start/plugin-lib-eslint'
 import { istanbulInstrument, istanbulReport } from '@start/plugin-lib-istanbul'
 import tape from '@start/plugin-lib-tape'
@@ -63,16 +62,6 @@ export const pack = () =>
     remove,
     parallel(['build', 'dts'])(),
   )
-
-export const dev = () => watch('src/**/*.ts')(
-  sequence(
-    read,
-    babel(babelConfig),
-    rename((file) => file.replace(/\.ts$/, '.js')),
-    write('build/'),
-    typescriptGenerate('build/')
-  )
-)
 
 export const lint = () =>
   sequence(
