@@ -328,7 +328,7 @@ export default defineConfig(
       'dot-notation': 'off',
       '@typescript-eslint/dot-notation': 'error',
       '@typescript-eslint/explicit-function-return-type': 'error',
-      '@typescript-eslint/explicit-member-accessibility': 'error',
+      // '@typescript-eslint/explicit-member-accessibility': 'error',
       '@typescript-eslint/explicit-module-boundary-types': 'error',
       'init-declarations': 'off',
       '@typescript-eslint/init-declarations': 'off',
@@ -359,6 +359,10 @@ export default defineConfig(
         {
           selector: ['typeParameter'],
           format: ['PascalCase']
+        },
+        {
+          selector: "class",
+          format: ["PascalCase"]
         }
       ],
       'no-array-constructor': 'off',
@@ -455,7 +459,7 @@ export default defineConfig(
       '@typescript-eslint/prefer-optional-chain': 'error',
       'prefer-promise-reject-errors': 'off',
       '@typescript-eslint/prefer-promise-reject-errors': 'error',
-      '@typescript-eslint/prefer-readonly': 'error',
+      // '@typescript-eslint/prefer-readonly': 'error',
       // '@typescript-eslint/prefer-readonly-parameter-types': 'error',
       '@typescript-eslint/prefer-reduce-type-parameter': 'error',
       // '@typescript-eslint/prefer-regexp-exec': 'error',
