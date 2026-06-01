@@ -344,13 +344,13 @@ export default defineConfig(
           format: ['camelCase']
         },
         {
-          selector: "function",
-          format: ["camelCase", "PascalCase"],
-          leadingUnderscore: "allow"
+          selector: 'function',
+          format: ['camelCase', 'PascalCase'],
+          leadingUnderscore: 'allow'
         },
         {
-          selector: "class",
-          format: ["PascalCase"]
+          selector: 'class',
+          format: ['PascalCase']
         },
         {
           selector: 'memberLike',
@@ -358,7 +358,7 @@ export default defineConfig(
         },
         {
           selector: 'variableLike',
-          format: ['camelCase', 'UPPER_CASE'],
+          format: ['camelCase', 'UPPER_CASE', 'PascalCase'],
           leadingUnderscore: 'allow'
         },
         {
