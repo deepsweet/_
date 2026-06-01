@@ -22,13 +22,13 @@ export default defineConfig(
       }
     },
     settings: {
-      'import/extensions': ['.js', '.ts'],
+      'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
       'import/parsers': {
         '@typescript-eslint/parser': ['.ts', '.tsx']
       },
       'import/resolver': {
         node: {
-          extensions: ['.js', '.ts']
+          extensions: ['.js', '.jsx', '.ts', '.tsx']
         }
       }
     },
@@ -93,6 +93,7 @@ export default defineConfig(
       // 'require-atomic-updates': 'error',
       'use-isnan': 'error',
       'valid-typeof': 'error',
+      'curly': 'error',
       'perfectionist/sort-imports': [
         'error',
         {
@@ -280,13 +281,13 @@ export default defineConfig(
       '@stylistic/type-named-tuple-spacing': 'error',
       '@stylistic/wrap-iife': ['error', 'outside'],
       // '@stylistic/wrap-regex': 'error',
-      '@stylistic/yield-star-spacing': ['error', 'before']
+      '@stylistic/yield-star-spacing': ['error', 'after']
     }
   },
   // https://typescript-eslint.io/rules/
   {
     name: 'TypeScript',
-    files: ['**/*.ts'],
+    files: ['**/*.{ts,tsx}'],
     plugins: {
       '@typescript-eslint': tsEslint.plugin
     },
@@ -343,6 +344,15 @@ export default defineConfig(
           format: ['camelCase']
         },
         {
+          selector: "function",
+          format: ["camelCase", "PascalCase"],
+          leadingUnderscore: "allow"
+        },
+        {
+          selector: "class",
+          format: ["PascalCase"]
+        },
+        {
           selector: 'memberLike',
           format: null
         },
@@ -359,10 +369,6 @@ export default defineConfig(
         {
           selector: ['typeParameter'],
           format: ['PascalCase']
-        },
-        {
-          selector: "class",
-          format: ["PascalCase"]
         }
       ],
       'no-array-constructor': 'off',
@@ -503,7 +509,9 @@ export default defineConfig(
         'ignorePackages',
         {
           js: 'always',
-          ts: 'always'
+          jsx: 'always',
+          ts: 'always',
+          tsx: 'always',
         }
       ]
     }
