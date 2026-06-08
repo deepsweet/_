@@ -513,7 +513,8 @@ export default defineConfig(
           ts: 'always',
           tsx: 'always',
         }
-      ]
+      ],
+      "import/no-extraneous-dependencies": ["error", { includeTypes: true }]
     }
   }
 )
