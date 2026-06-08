@@ -392,7 +392,7 @@ export default defineConfig(
       '@typescript-eslint/no-implied-eval': 'error',
       // '@typescript-eslint/no-import-type-side-effects': 'error',
       '@typescript-eslint/no-inferrable-types': 'error',
-      '@typescript-eslint/no-invalid-void-type': 'error',
+      '@typescript-eslint/no-invalid-void-type': 'off',
       'no-loop-func': 'off',
       '@typescript-eslint/no-loop-func': 'off',
       'no-magic-numbers': 'off',
