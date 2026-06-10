@@ -93,64 +93,55 @@ export default defineConfig(
       // 'require-atomic-updates': 'error',
       'use-isnan': 'error',
       'valid-typeof': 'error',
-      'curly': 'error',
-      'perfectionist/sort-imports': [
-        'error',
-        {
-          type: 'natural',
-          newlinesBetween: 0,
-          groups: [
-            'value-builtin',
-            'value-external',
-            'value-internal',
-            'value-index',
-            'value-sibling',
-            'value-parent',
-            'type-builtin',
-            'type-external',
-            'type-internal',
-            'type-index',
-            'type-sibling',
-            'type-parent',
-            'ts-equals-import',
-            'unknown'
-          ]
-        }
-      ],
-      'perfectionist/sort-exports': [
-        'error',
-        {
-          type: 'natural',
-          newlinesBetween: 1,
-          groups: [
-            'value-export',
-            'type-export',
-            'unknown'
-          ]
-        }
-      ],
-      'perfectionist/sort-modules': [
-        'error',
-        {
-          type: 'unsorted',
-          newlinesBetween: 'ignore',
-          groups: [
-            'declare-interface',
-            'interface',
-            'export-interface',
-            'declare-type',
-            'type',
-            'export-type',
-            'declare-class',
-            'class',
-            'export-class',
-            'declare-function',
-            'export-function',
-            'function',
-            'unknown'
-          ]
-        }
-      ],
+      curly: 'error',
+      'perfectionist/sort-imports': ['error', {
+        type: 'natural',
+        newlinesBetween: 0,
+        groups: [
+          'value-builtin',
+          'value-external',
+          'value-internal',
+          'value-index',
+          'value-sibling',
+          'value-parent',
+          'type-builtin',
+          'type-external',
+          'type-internal',
+          'type-index',
+          'type-sibling',
+          'type-parent',
+          'ts-equals-import',
+          'unknown'
+        ]
+      }],
+      'perfectionist/sort-exports': ['error', {
+        type: 'natural',
+        newlinesBetween: 1,
+        groups: [
+          'value-export',
+          'type-export',
+          'unknown'
+        ]
+      }],
+      'perfectionist/sort-modules': ['error', {
+        type: 'unsorted',
+        newlinesBetween: 'ignore',
+        groups: [
+          'declare-interface',
+          'interface',
+          'export-interface',
+          'declare-type',
+          'type',
+          'export-type',
+          'declare-class',
+          'class',
+          'export-class',
+          'declare-function',
+          'export-function',
+          'function',
+          'unknown'
+        ]
+      }],
       // https://perfectionist.dev/rules/
       'perfectionist/sort-named-exports': ['error', { type: 'natural' }],
       'perfectionist/sort-named-imports': ['error', { type: 'natural' }],
@@ -201,20 +192,17 @@ export default defineConfig(
       // '@stylistic/lines-between-class-members': ['error', 'never'],
       // '@stylistic/max-len': ['error', { code: 120 }],
       '@stylistic/max-statements-per-line': ['error', { max: 1 }],
-      '@stylistic/member-delimiter-style': [
-        'error',
-        {
-          multiline: {
-            delimiter: 'comma',
-            requireLast: false
-          },
-          singleline: {
-            delimiter: 'comma',
-            requireLast: false
-          },
-          multilineDetection: 'brackets'
-        }
-      ],
+      '@stylistic/member-delimiter-style': ['error', {
+        multiline: {
+          delimiter: 'comma',
+          requireLast: false
+        },
+        singleline: {
+          delimiter: 'comma',
+          requireLast: false
+        },
+        multilineDetection: 'brackets'
+      }],
       // '@stylistic/multiline-comment-style': ['error', 'starred-block'],
       '@stylistic/multiline-ternary': ['error', 'always-multiline'],
       '@stylistic/new-parens': ['error', 'always'],
@@ -260,15 +248,12 @@ export default defineConfig(
       '@stylistic/rest-spread-spacing': ['error', 'never'],
       '@stylistic/semi': ['error', 'never'],
       '@stylistic/space-before-blocks': ['error', 'always'],
-      '@stylistic/space-before-function-paren': [
-        'error',
-        {
-          anonymous: 'always',
-          named: 'never',
-          asyncArrow: 'always',
-          catch: 'never'
-        }
-      ],
+      '@stylistic/space-before-function-paren': ['error', {
+        anonymous: 'always',
+        named: 'never',
+        asyncArrow: 'always',
+        catch: 'never'
+      }],
       '@stylistic/space-in-parens': ['error', 'never'],
       '@stylistic/space-infix-ops': 'error',
       '@stylistic/space-unary-ops': 'error',
@@ -479,27 +464,21 @@ export default defineConfig(
       '@typescript-eslint/restrict-plus-operands': 'error',
       '@typescript-eslint/restrict-template-expressions': ['error', { allowNever: true }],
       '@typescript-eslint/return-await': ['error', 'error-handling-correctness-only'],
-      '@typescript-eslint/strict-boolean-expressions': [
-        'error',
-        {
-          allowAny: false,
-          allowNullableBoolean: false,
-          allowNullableEnum: false,
-          allowNullableNumber: false,
-          allowNullableObject: false,
-          allowNullableString: false,
-          allowNumber: false,
-          allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing: false,
-          allowString: false
-        }
-      ],
-      '@typescript-eslint/switch-exhaustiveness-check': [
-        'error',
-        {
-          considerDefaultExhaustiveForUnions: true,
-          requireDefaultForNonUnion: true
-        }
-      ],
+      '@typescript-eslint/strict-boolean-expressions': ['error', {
+        allowAny: false,
+        allowNullableBoolean: false,
+        allowNullableEnum: false,
+        allowNullableNumber: false,
+        allowNullableObject: false,
+        allowNullableString: false,
+        allowNumber: false,
+        allowRuleToRunWithoutStrictNullChecksIKnowWhatIAmDoing: false,
+        allowString: false
+      }],
+      '@typescript-eslint/switch-exhaustiveness-check': ['error', {
+        considerDefaultExhaustiveForUnions: true,
+        requireDefaultForNonUnion: true
+      }],
       '@typescript-eslint/triple-slash-reference': 'error',
       '@typescript-eslint/unbound-method': 'error',
       '@typescript-eslint/unified-signatures': 'error',
@@ -512,9 +491,10 @@ export default defineConfig(
           jsx: 'always',
           ts: 'always',
           tsx: 'always',
+          checkTypeImports: true
         }
       ],
-      "import/no-extraneous-dependencies": ["error", { includeTypes: true }]
+      'import/no-extraneous-dependencies': ['error', { includeTypes: true }]
     }
   }
 )
